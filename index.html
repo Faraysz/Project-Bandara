@@ -4,25 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SkyPort International - Jendela Langit Anda</title>
+
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .status-on-time { color: #10b981; font-weight: bold; }
-        .status-delay { color: #ef4444; font-weight: bold; }
-        .status-boarding { color: #f59e0b; font-weight: bold; }
-        .status-arrived { color: #3b82f6; font-weight: bold; }
-        .map-placeholder { background: #e5e7eb; border: 2px dashed #9ca3af; }
-    </style>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-gray-50 font-sans">
 
+    <!-- NAVBAR -->
     <nav class="bg-blue-900 text-white sticky top-0 z-50 shadow-md">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <i class="fas fa-plane-departure text-2xl"></i>
                 <span class="text-xl font-bold tracking-wider">SKYPORT</span>
             </div>
-            
+
             <div class="hidden md:flex space-x-6 text-sm font-medium">
                 <a href="#schedules" class="hover:text-blue-300">Jadwal</a>
                 <a href="#map" class="hover:text-blue-300">Peta Bandara</a>
@@ -42,33 +43,49 @@
         </div>
     </nav>
 
+    <!-- HERO -->
     <header class="bg-blue-800 text-white py-16 px-4 text-center">
-        <h1 id="hero-title" class="text-3xl md:text-5xl font-bold mb-4">Selamat Datang di SkyPort</h1>
-        <p id="hero-sub" class="mb-8 text-blue-100">Cari informasi penerbangan Anda secara real-time</p>
-        
+        <h1 id="hero-title" class="text-3xl md:text-5xl font-bold mb-4">
+            Selamat Datang di SkyPort
+        </h1>
+        <p id="hero-sub" class="mb-8 text-blue-100">
+            Cari informasi penerbangan Anda secara real-time
+        </p>
+
         <div class="max-w-4xl mx-auto bg-white p-4 rounded-lg shadow-xl flex flex-wrap gap-2">
-            <input type="text" id="flightSearch" placeholder="Maskapai, No. Penerbangan, atau Kota..." class="flex-grow p-3 text-gray-800 border rounded outline-none focus:border-blue-500">
+            <input type="text" id="flightSearch"
+                placeholder="Maskapai, No. Penerbangan, atau Kota..."
+                class="flex-grow p-3 text-gray-800 border rounded outline-none focus:border-blue-500">
             <button class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded font-bold transition">
                 CARI
             </button>
         </div>
     </header>
 
+    <!-- SMART UPDATE -->
     <div class="bg-yellow-100 border-b border-yellow-200 py-2">
         <div class="container mx-auto px-4 flex items-center justify-between text-sm">
-            <span><i class="fas fa-bell text-yellow-600 mr-2"></i> <strong>Smart Update:</strong> GA-124 ke Jakarta kini status <b>Boarding</b> di Gate 5.</span>
-            <button class="text-gray-500 hover:text-black"><i class="fas fa-times"></i></button>
+            <span>
+                <i class="fas fa-bell text-yellow-600 mr-2"></i>
+                <strong>Smart Update:</strong>
+                GA-124 ke Jakarta kini status <b>Boarding</b> di Gate 5.
+            </span>
+            <button class="text-gray-500 hover:text-black">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
     </div>
 
+    <!-- MAIN CONTENT -->
     <main class="container mx-auto px-4 py-10">
 
+        <!-- SCHEDULE -->
         <section id="schedules" class="mb-12">
             <div class="flex justify-between items-end mb-6">
                 <h2 class="text-2xl font-bold text-gray-800">Jadwal Penerbangan</h2>
                 <div class="flex bg-gray-200 rounded-lg p-1">
-                    <button id="btn-dep" class="px-4 py-2 rounded-md bg-white shadow-sm font-semibold">Keberangkatan</button>
-                    <button id="btn-arr" class="px-4 py-2 rounded-md text-gray-600">Kedatangan</button>
+                    <button id="btn-dep" class="tab-active">Keberangkatan</button>
+                    <button id="btn-arr" class="tab-inactive">Kedatangan</button>
                 </div>
             </div>
 
@@ -93,96 +110,121 @@
                             <td class="p-4 text-center">T3 / G12</td>
                             <td class="p-4 status-on-time">ON TIME</td>
                         </tr>
-                        <tr class="border-b hover:bg-gray-50">
-                            <td class="p-4">11:15</td>
-                            <td class="p-4 font-semibold">Denpasar (DPS)</td>
-                            <td class="p-4">IndoLines</td>
-                            <td class="p-4 text-blue-600 font-medium">ID-77</td>
-                            <td class="p-4 text-center">T1 / A5</td>
-                            <td class="p-4 status-delay">DELAY (11:45)</td>
-                        </tr>
-                        <tr class="border-b hover:bg-gray-50">
-                            <td class="p-4">11:30</td>
-                            <td class="p-4 font-semibold">Tokyo (HND)</td>
-                            <td class="p-4">Nippon Airways</td>
-                            <td class="p-4 text-blue-600 font-medium">NA-001</td>
-                            <td class="p-4 text-center">T3 / G01</td>
-                            <td class="p-4 status-boarding">BOARDING</td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
         </section>
-
         <div class="grid md:grid-cols-2 gap-8">
-            <section id="map">
-                <h2 class="text-2xl font-bold mb-4 text-gray-800">Peta Interaktif</h2>
-                <div class="bg-white p-4 rounded-xl shadow">
-                    <div class="map-placeholder h-64 rounded-lg flex items-center justify-center flex-col">
-                        <i class="fas fa-map-marked-alt text-5xl text-gray-400 mb-2"></i>
-                        <p class="text-gray-500 italic">Peta Interaktif Memuat...</p>
-                    </div>
-                    <div class="flex flex-wrap gap-4 mt-4 justify-center">
-                        <span class="text-xs bg-gray-100 px-3 py-1 rounded-full border cursor-pointer hover:bg-blue-100"><i class="fas fa-toilet mr-1"></i> Toilet</span>
-                        <span class="text-xs bg-gray-100 px-3 py-1 rounded-full border cursor-pointer hover:bg-blue-100"><i class="fas fa-mosque mr-1"></i> Mushola</span>
-                        <span class="text-xs bg-gray-100 px-3 py-1 rounded-full border cursor-pointer hover:bg-blue-100"><i class="fas fa-utensils mr-1"></i> Restoran</span>
-                        <span class="text-xs bg-gray-100 px-3 py-1 rounded-full border cursor-pointer hover:bg-blue-100"><i class="fas fa-couch mr-1"></i> Lounge</span>
-                    </div>
-                </div>
-            </section>
 
-            <section id="transport">
-                <h2 class="text-2xl font-bold mb-4 text-gray-800">Transportasi & Parkir</h2>
-                <div class="grid grid-cols-2 gap-4 text-sm">
-                    <div class="bg-white p-4 rounded-lg shadow flex items-center space-x-3">
-                        <i class="fas fa-train text-blue-600 text-xl"></i>
-                        <div><p class="font-bold">Kereta Bandara</p><p class="text-xs text-gray-500">Tersedia setiap 15 menit</p></div>
-                    </div>
-                    <div class="bg-white p-4 rounded-lg shadow flex items-center space-x-3">
-                        <i class="fas fa-bus text-green-600 text-xl"></i>
-                        <div><p class="font-bold">Bus (Damri)</p><p class="text-xs text-gray-500">Seluruh area Jabodetabek</p></div>
-                    </div>
-                    <div class="bg-white p-4 rounded-lg shadow flex items-center space-x-3">
-                        <i class="fas fa-taxi text-yellow-500 text-xl"></i>
-                        <div><p class="font-bold">Taksi Resmi</p><p class="text-xs text-gray-500">Antrian di Gate Kedatangan</p></div>
-                    </div>
-                    <div class="bg-white p-4 rounded-lg shadow flex items-center space-x-3">
-                        <i class="fas fa-parking text-gray-700 text-xl"></i>
-                        <div><p class="font-bold">Parkir Inap</p><p class="text-xs text-gray-500">Tersedia di Terminal 1 & 2</p></div>
-                    </div>
-                </div>
-            </section>
+    <!-- PETA INTERAKTIF -->
+    <section id="map">
+        <h2 class="text-2xl font-bold mb-4 text-gray-800">Peta Interaktif</h2>
+        <div class="bg-white p-4 rounded-xl shadow">
+            <div class="map-placeholder h-64 rounded-lg flex items-center justify-center flex-col">
+                <i class="fas fa-map-marked-alt text-5xl text-gray-400 mb-2"></i>
+                <p class="text-gray-500 italic">Peta Interaktif Memuat...</p>
+            </div>
+
+            <div class="flex flex-wrap gap-3 mt-4 justify-center">
+                <span class="text-xs bg-gray-100 px-3 py-1 rounded-full border cursor-pointer hover:bg-blue-100">
+                    <i class="fas fa-toilet mr-1"></i> Toilet
+                </span>
+                <span class="text-xs bg-gray-100 px-3 py-1 rounded-full border cursor-pointer hover:bg-blue-100">
+                    <i class="fas fa-mosque mr-1"></i> Mushola
+                </span>
+                <span class="text-xs bg-gray-100 px-3 py-1 rounded-full border cursor-pointer hover:bg-blue-100">
+                    <i class="fas fa-utensils mr-1"></i> Restoran
+                </span>
+                <span class="text-xs bg-gray-100 px-3 py-1 rounded-full border cursor-pointer hover:bg-blue-100">
+                    <i class="fas fa-couch mr-1"></i> Lounge
+                </span>
+            </div>
         </div>
+    </section>
+
+    <!-- TRANSPORTASI -->
+    <section id="transport">
+        <h2 class="text-2xl font-bold mb-4 text-gray-800">Transportasi & Parkir</h2>
+
+        <div class="grid grid-cols-2 gap-4 text-sm">
+            <div class="bg-white p-4 rounded-lg shadow flex items-center space-x-3">
+                <i class="fas fa-train text-blue-600 text-xl"></i>
+                <div>
+                    <p class="font-bold">Kereta Bandara</p>
+                    <p class="text-xs text-gray-500">Tersedia setiap 15 menit</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-lg shadow flex items-center space-x-3">
+                <i class="fas fa-bus text-green-600 text-xl"></i>
+                <div>
+                    <p class="font-bold">Bus (Damri)</p>
+                    <p class="text-xs text-gray-500">Seluruh area Jabodetabek</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-lg shadow flex items-center space-x-3">
+                <i class="fas fa-taxi text-yellow-500 text-xl"></i>
+                <div>
+                    <p class="font-bold">Taksi Resmi</p>
+                    <p class="text-xs text-gray-500">Antrian di Gate Kedatangan</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-lg shadow flex items-center space-x-3">
+                <i class="fas fa-parking text-gray-700 text-xl"></i>
+                <div>
+                    <p class="font-bold">Parkir Inap</p>
+                    <p class="text-xs text-gray-500">Tersedia di Terminal 1 & 2</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
     </main>
-
     <footer class="bg-gray-800 text-white py-10 mt-10">
-        <div class="container mx-auto px-4 grid md:grid-cols-3 gap-8 text-sm">
-            <div>
-                <h3 class="font-bold text-lg mb-4">SkyPort International</h3>
-                <p class="text-gray-400">Menyediakan pengalaman perjalanan terbaik dengan teknologi terdepan untuk kenyamanan Anda.</p>
-            </div>
-            <div>
-                <h3 class="font-bold text-lg mb-4">Link Cepat</h3>
-                <ul class="space-y-2 text-gray-400">
-                    <li><a href="#" class="hover:text-white">Panduan Keamanan</a></li>
-                    <li><a href="#" class="hover:text-white">Hubungi Kami</a></li>
-                    <li><a href="#" class="hover:text-white">Kebijakan Privasi</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="font-bold text-lg mb-4">Newsletter</h3>
-                <div class="flex">
-                    <input type="email" placeholder="Email anda" class="p-2 rounded-l w-full text-black">
-                    <button class="bg-blue-600 px-4 rounded-r">Daftar</button>
-                </div>
-            </div>
-        </div>
-        <div class="text-center mt-10 pt-5 border-t border-gray-700 text-gray-500 text-xs">
-            © 2026 SkyPort Airport Authority. All Rights Reserved.
-        </div>
-    </footer>
+    <div class="container mx-auto px-4 grid md:grid-cols-3 gap-8 text-sm">
 
-    <div id="chatbot-btn" class="fixed bottom-6 right-6 bg-blue-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl cursor-pointer hover:scale-110 transition duration-300">
+        <div>
+            <h3 class="font-bold text-lg mb-4">SkyPort International</h3>
+            <p class="text-gray-400">
+                Menyediakan pengalaman perjalanan terbaik dengan teknologi terdepan
+                untuk kenyamanan Anda.
+            </p>
+        </div>
+
+        <div>
+            <h3 class="font-bold text-lg mb-4">Link Cepat</h3>
+            <ul class="space-y-2 text-gray-400">
+                <li><a href="#" class="hover:text-white">Panduan Keamanan</a></li>
+                <li><a href="#" class="hover:text-white">Hubungi Kami</a></li>
+                <li><a href="#" class="hover:text-white">Kebijakan Privasi</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3 class="font-bold text-lg mb-4">Newsletter</h3>
+            <div class="flex">
+                <input type="email" placeholder="Email anda"
+                    class="p-2 rounded-l w-full text-black">
+                <button class="bg-blue-600 px-4 rounded-r">
+                    Daftar
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="text-center mt-10 pt-5 border-t border-gray-700 text-gray-500 text-xs">
+        © 2026 SkyPort Airport Authority. All Rights Reserved.
+    </div>
+</footer>
+
+
+    <!-- CHATBOT -->
+    <div id="chatbot-btn" class="fixed bottom-6 right-6 bg-blue-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl cursor-pointer">
         <i class="fas fa-robot text-2xl"></i>
     </div>
 
@@ -192,48 +234,13 @@
             <button id="close-chat">×</button>
         </div>
         <div class="h-64 p-4 overflow-y-auto text-sm space-y-3 bg-gray-50">
-            <div class="bg-blue-100 p-2 rounded-lg inline-block">Halo! Ada yang bisa saya bantu terkait jadwal atau fasilitas bandara?</div>
-        </div>
-        <div class="p-3 border-t flex">
-            <input type="text" placeholder="Tanya sesuatu..." class="flex-grow text-sm outline-none">
-            <button class="text-blue-600 px-2"><i class="fas fa-paper-plane"></i></button>
+            <div class="bg-blue-100 p-2 rounded-lg inline-block">
+                Halo! Ada yang bisa saya bantu?
+            </div>
         </div>
     </div>
 
-    <script>
-        // Language Toggle Logic
-        const langToggle = document.getElementById('langToggle');
-        const translations = {
-            id: { hero: "Selamat Datang di SkyPort", sub: "Cari informasi penerbangan Anda secara real-time" },
-            en: { hero: "Welcome to SkyPort", sub: "Search your flight information in real-time" }
-        };
-
-        langToggle.addEventListener('change', (e) => {
-            const l = e.target.value;
-            document.getElementById('hero-title').innerText = translations[l].hero;
-            document.getElementById('hero-sub').innerText = translations[l].sub;
-        });
-
-        // Chatbot Toggle
-        const chatBtn = document.getElementById('chatbot-btn');
-        const chatWindow = document.getElementById('chat-window');
-        const closeChat = document.getElementById('close-chat');
-
-        chatBtn.onclick = () => chatWindow.classList.toggle('hidden');
-        closeChat.onclick = () => chatWindow.classList.add('hidden');
-
-        // Simple Tab Logic
-        const btnDep = document.getElementById('btn-dep');
-        const btnArr = document.getElementById('btn-arr');
-
-        btnDep.onclick = () => {
-            btnDep.className = "px-4 py-2 rounded-md bg-white shadow-sm font-semibold";
-            btnArr.className = "px-4 py-2 rounded-md text-gray-600";
-        };
-        btnArr.onclick = () => {
-            btnArr.className = "px-4 py-2 rounded-md bg-white shadow-sm font-semibold";
-            btnDep.className = "px-4 py-2 rounded-md text-gray-600";
-        };
-    </script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
 </body>
 </html>
